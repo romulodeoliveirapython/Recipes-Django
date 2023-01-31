@@ -40,7 +40,7 @@
 
         <span class="recipe-author-item">
             <i class="fas fa-calendar-alt"></i>
-            {{ recipe.created_at|date:"d/m/Y" }} às {{ recipe.created_at|time:"h:iA" }}
+            {{ recipe.created_at|date:"d/m/Y" }} às {{ recipe.created_at|time:"h:i" }}
         </span>
 
         {% if recipe.category is not None %}
@@ -67,7 +67,7 @@
         <div class="recipe-meta recipe-servings">
             <h3 class="recipe-meta-title"><i class="fas fa-pizza-slice"></i> Porções</h3>
             <div class="recipe-meta-text">
-                {{ recipe.servings }} {{ recipe.servings_unit }}
+                {{ recipe.serving }} {{ recipe.serving_unit }}
             </div>
         </div>
     </div>
