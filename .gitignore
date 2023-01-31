@@ -1,3 +1,7 @@
+utils/
+utils/recipes/
+
+
 # Django #
 *.log
 *.pot
