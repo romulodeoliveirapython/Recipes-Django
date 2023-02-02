@@ -17,14 +17,14 @@
 
     <div class="recipe-author">
 
-        {% if recipe.author is not None %}
         <span class="recipe-author-item">
+            <i class="fas fa-user"></i>
+            {% if recipe.author is not None %}
 
             {% if recipe.author.profile %}
             <a href="{% url 'authors:profile' recipe.author.profile.id %}">
                 {% endif %}
 
-                <i class="fas fa-user"></i>
                 {% if recipe.author.first_name %}
                 {{ recipe.author.first_name }} {{ recipe.author.last_name }}
                 {% else %}
@@ -35,8 +35,11 @@
             </a>
             {% endif %}
 
+            {% else %}
+            Desconhecido
+            {% endif %}
+
         </span>
-        {% endif %}
 
         <span class="recipe-author-item">
             <i class="fas fa-calendar-alt"></i>
@@ -73,7 +76,7 @@
     </div>
 
     <footer class="recipe-footer">
-        <a class="recipe-read-more button button-dark button-full-width" href="/recipes/3/">
+        <a class="recipe-read-more button button-dark button-full-width" href="{% url 'recipes:recipe' recipe.id %}">
             <i class="fas fa-eye"></i>
             <span>ver mais...</span>
         </a>
