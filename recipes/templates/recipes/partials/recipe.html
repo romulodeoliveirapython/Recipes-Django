@@ -75,10 +75,33 @@
         </div>
     </div>
 
+    {% if is_detail_page is not True %}
     <footer class="recipe-footer">
         <a class="recipe-read-more button button-dark button-full-width" href="{% url 'recipes:recipe' recipe.id %}">
             <i class="fas fa-eye"></i>
-            <span>ver mais...</span>
+            <span>Ver mais...</span>
         </a>
     </footer>
+    {% endif %}
+
+    {% if is_detail_page is True %}
+    <div class="preparation-steps">
+        {% if recipe.preparation_steps_is_html is True %}
+        {{ recipe.preparation_steps|safe }}
+        {% else %}
+        {{ recipe.preparation_steps|linebreaksbr }}
+        {% endif %}
+
+        {% if recipe.tags.all %}
+        <p>
+            Tags:
+            {% for tag in recipe.tags.all %}
+            <a href="{% url 'recipes:tag' tag.slug %}">
+                {{ tag.name }}
+            </a>,
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+    {% endif %}
 </div>
